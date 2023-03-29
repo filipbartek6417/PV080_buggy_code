@@ -32,9 +32,13 @@ def fetch_website(urllib_version, url):
         import urllib2 as urllib
     elif urllib_version == 3:
         import urllib3 as urllib
+    else:
+        raise AttributeError
     # Fetch and print the requested URL
 
     try:
+        if url != "https://www.google.com":
+            raise AttributeError
         http = urllib.PoolManager()
         r = http.request('GET', url)
     except:
